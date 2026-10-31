@@ -1282,7 +1282,7 @@
                     <div class="guest-label" data-i18n="p1_invite_label">សូមគោរពអញ្ជើញ</div>
                     <div class="guest-name-box">
                         <div class="guest-name-inner" id="guestName">
-                            ជូនចំពោះ ភ្ញៀវកិត្តិយស
+                            ភ្ញៀវកិត្តិយស
                         </div>
                     </div>
                 </div>
@@ -1542,13 +1542,11 @@
 
         if (guestNameElement) {
             if (guestParam) {
-                // បើ link មានតែឈ្មោះ បន្ថែម "ជូនចំពោះ"; បើមានស្រាប់ កុំបន្ថែមម្ដងទៀត។
-                guestNameElement.textContent = guestParam.startsWith('ជូនចំពោះ')
-                    ? guestParam
-                    : `ជូនចំពោះ ${guestParam}`;
+                // បង្ហាញតែឈ្មោះភ្ញៀវ ដោយមិនបន្ថែមពាក្យ "ជូនចំពោះ"។
+                guestNameElement.textContent = guestParam.replace(/^ជូនចំពោះ\s*/, '').trim();
             } else {
-                // បើ link មិនមាន ?to=ឈ្មោះ សូមបង្ហាញឈ្មោះទូទៅ មិនមែនឈ្មោះហាង។
-                guestNameElement.textContent = 'ជូនចំពោះ ភ្ញៀវកិត្តិយស';
+                // បើ link មិនមាន ?to=ឈ្មោះ បង្ហាញតែ "ភ្ញៀវកិត្តិយស"។
+                guestNameElement.textContent = 'ភ្ញៀវកិត្តិយស';
             }
         }
 
